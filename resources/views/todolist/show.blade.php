@@ -122,9 +122,12 @@
                 }
             });
             jQuery(document).on('click', '.delete', function() {
+                let confirmation  = confirm("Are you sure want to delete this task");
                 let task = $(this).parent().parent().find("td").eq(1).text();
                 flag = true;
 
+               if(confirmation)
+               {
                 jQuery.ajax({
                     type: "DELETE",
                     url: `todolist/${task}`,
@@ -148,6 +151,7 @@
                         console.log(result);
                     }
                 })
+               }
             });
             jQuery(document).on('click', '.done', function() {
                 let task = $(this).parent().parent().find("td").eq(1).text();
